@@ -53,7 +53,7 @@ async function fetchImages(searchValue) {
     clearImageCards();
     observer.unobserve(anchor);
     btnRef.hidden = true;
-    document.removeEventListener('scroll', onScrollPage);
+    // document.removeEventListener('scroll', onScrollPage);
   }
   return imagesArray;
 }
@@ -84,7 +84,7 @@ async function onSearch(evt) {
     }
     if (imagesArray.length === limit) {
       observer.observe(anchor);
-      document.addEventListener('scroll', onScrollPage);
+      // document.addEventListener('scroll', onScrollPage);
     }
   } catch (err) {
     console.log(err);
@@ -156,16 +156,6 @@ async function onLoadMore() {
   }
 }
 
-function onScrollPage() {
-  const { height: cardHeight } =
-    galleryRef.firstElementChild.getBoundingClientRect();
-
-  window.scrollBy({
-    top: cardHeight * 2,
-    behavior: 'smooth',
-  });
-}
-
 function onLoad(entries, observer) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -176,3 +166,15 @@ function onLoad(entries, observer) {
     }
   });
 }
+
+// Функція для сповільнення скролу сторінки
+
+// function onScrollPage() {
+//   const { height: cardHeight } =
+//     galleryRef.firstElementChild.getBoundingClientRect();
+
+//   window.scrollBy({
+//     top: cardHeight * 2,
+//     behavior: 'smooth',
+//   });
+// }
